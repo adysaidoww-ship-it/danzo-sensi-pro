@@ -6,11 +6,13 @@
     <title>DANZO SENSI PRO | Free Fire Settings</title>
     <link href="https://fonts.googleapis.com" rel="stylesheet">
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
             background-color: #0a0a0a;
             color: #e0e0e0;
-            font-family: 'Inter', sans-serif;
-            margin: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -18,155 +20,157 @@
         }
 
         .container {
-            max-width: 500px;
+            max-width: 480px;
             width: 100%;
             text-align: center;
-            border: 1px solid #333;
-            padding: 30px;
-            border-radius: 8px;
-            background: #111;
         }
 
         h1 {
-            font-family: 'Inter', sans-serif;
-            color: #fff;
-            font-size: 24px;
-            margin-bottom: 8px;
+            font-size: 28px;
             font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
         }
 
         .subtitle {
-            color: #888;
             font-size: 13px;
-            margin-bottom: 30px;
+            color: #666;
+            margin-bottom: 32px;
+            font-weight: 400;
         }
 
         input {
             width: 100%;
-            padding: 14px;
-            border-radius: 6px;
+            padding: 14px 16px;
             border: 1px solid #333;
-            background: #0a0a0a;
-            color: #fff;
+            border-radius: 8px;
+            background: #111;
+            color: #e0e0e0;
             font-size: 14px;
-            margin-bottom: 20px;
             outline: none;
             transition: border-color 0.2s;
+            margin-bottom: 20px;
         }
 
         input:focus {
-            border-color: #666;
+            border-color: #444;
         }
 
         .btn-get {
+            width: 100%;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 8px;
             background: #1a1a1a;
-            color: #fff;
-            border: 1px solid #333;
-            padding: 14px 28px;
-            font-weight: 500;
-            border-radius: 6px;
-            cursor: pointer;
+            color: #e0e0e0;
             font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
             transition: all 0.2s;
             display: none;
         }
 
         .btn-get:hover {
             background: #222;
-            border-color: #444;
         }
 
         .btn-get:active {
-            background: #0a0a0a;
+            transform: scale(0.98);
         }
 
         #result {
-            margin-top: 25px;
+            margin-top: 24px;
             display: none;
-            background: #0f0f0f;
+            background: #111;
             padding: 20px;
-            border-radius: 6px;
-            border-left: 3px solid #666;
+            border-radius: 8px;
+            border-left: 3px solid #333;
             text-align: left;
         }
 
-        .settings-title {
-            color: #fff;
+        .result-title {
+            font-size: 14px;
             font-weight: 600;
-            font-size: 16px;
+            color: #666;
             margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .device-name {
-            color: #888;
-            font-size: 13px;
-            margin-bottom: 15px;
-            text-align: center;
+        .result-device {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            color: #e0e0e0;
         }
 
         .setting-item {
-            color: #ccc;
-            font-size: 14px;
+            font-size: 13px;
             margin-bottom: 8px;
+            color: #999;
         }
 
-        .setting-item b {
-            color: #fff;
+        .setting-value {
+            color: #e0e0e0;
+            font-weight: 500;
         }
 
         .loader {
             display: none;
             margin: 20px auto;
-            border: 3px solid #1a1a1a;
-            border-top: 3px solid #666;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #222;
+            border-top-color: #333;
             border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            animation: spin 1s linear infinite;
+            animation: spin 0.8s linear infinite;
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            to { transform: rotate(360deg); }
         }
 
         .ai-box {
-            margin-top: 30px;
-            background: #0f0f0f;
+            margin-top: 32px;
+            background: #111;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 12px;
+            color: #666;
             border: 1px solid #222;
-            padding: 15px;
-            border-radius: 6px;
-            font-size: 13px;
         }
 
-        .ai-tag {
-            color: #666;
+        .ai-label {
+            color: #444;
             font-weight: 500;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            display: block;
         }
     </style>
 </head>
 <body>
-
     <div class="container">
         <h1>DANZO SENSI PRO</h1>
-        <p class="subtitle">Free Fire Settings 2024-2026</p>
+        <p class="subtitle">Free Fire Settings Generator</p>
         
-        <input type="text" id="phoneInput" placeholder="Введите модель устройства" oninput="toggleButton()">
+        <input type="text" id="phoneInput" placeholder="Введите название устройства" oninput="toggleButton()">
         
         <button class="btn-get" id="mainBtn" onclick="getSensi()">Получить настройки</button>
         
         <div class="loader" id="loader"></div>
 
         <div id="result">
-            <div id="sensiData"></div>
+            <div class="result-title">Настройки</div>
+            <div class="result-device" id="sensiData"></div>
         </div>
     </div>
 
     <div class="ai-box">
-        <span class="ai-tag">ChatGPT 5.4</span>: Выберите устройство для получения настроек DPI</div>
+        <span class="ai-label">GhatGPT 5.4</span>
+        Настройте идеальные параметры для вашего устройства
+    </div>
+
+    <audio id="clickSound" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3"></audio>
 
     <script>
         const androidDPI = [421, 431, 441, 451, 461, 471, 491, 511, 521, 531, 541, 551, 561, 571, 591, 611, 621, 425, 435, 445, 455, 465, 475, 495, 505, 515, 525, 535, 545, 565, 575, 595, 605, 615, 625];
@@ -177,7 +181,7 @@
 
         function toggleButton() {
             const val = document.getElementById('phoneInput').value;
-            document.getElementById('mainBtn').style.display = val.length > 2 ? 'inline-block' : 'none';
+            document.getElementById('mainBtn').style.display = val.length > 2 ? 'block' : 'none';
         }
 
         function getSensi() {
@@ -185,6 +189,9 @@
             const btn = document.getElementById('mainBtn');
             const loader = document.getElementById('loader');
             const resDiv = document.getElementById('result');
+            const sound = document.getElementById('clickSound');
+
+            sound.play();
 
             btn.style.display = 'none';
             resDiv.style.display = 'none';
@@ -193,8 +200,7 @@
             setTimeout(() => {
                 loader.style.display = 'none';
                 resDiv.style.display = 'block';
-                btn.style.display = 'inline-block';
-                
+                btn.style.display = 'block';
                 generateSettings(phone);
             }, 5000);
         }
@@ -207,7 +213,6 @@
             hash = Math.abs(hash);
 
             const isIphone = name.toLowerCase().includes('iphone');
-            
             const myDPI = isIphone ? iphoneDPI[hash % iphoneDPI.length] : androidDPI[hash % androidDPI.length];
             const myObzor = obzor[hash % obzor.length];
             const myColl = scopes[hash % scopes.length];
@@ -216,14 +221,12 @@
             const myBtn = buttons[hash % buttons.length];
 
             document.getElementById('sensiData').innerHTML = `
-                <div class="settings-title">НАСТРОЙКИ</div>
-                <div class="device-name">${name}</div>
-                <div class="setting-item">DPI: ${myDPI}</div>
-                <div class="setting-item">Обзор: ${myObzor}</div>
-                <div class="setting-item">Коллиматор: ${myColl}</div>
-                <div class="setting-item">2x: ${my2x}</div>
-                <div class="setting-item">4x: ${my4x}</div>
-                <div class="setting-item">Кнопка огня: ${myBtn}%</div>
+                <div class="setting-item">DPI: <span class="setting-value">${myDPI}</span></div>
+                <div class="setting-item">Обзор: <span class="setting-value">${myObzor}</span></div>
+                <div class="setting-item">Коллиматор: <span class="setting-value">${myColl}</span></div>
+                <div class="setting-item">2x: <span class="setting-value">${my2x}</span></div>
+                <div class="setting-item">4x: <span class="setting-value">${my4x}</span></div>
+                <div class="setting-item">Кнопка огня: <span class="setting-value">${myBtn}%</span></div>
             `;
         }
     </script>
