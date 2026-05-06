@@ -13,7 +13,7 @@
             margin: 0;
             display: flex;
             flex-direction: column;
-            align-items: coren;
+            align-items: center;
             padding: 20px;
         }
 
@@ -45,13 +45,92 @@
         /* Анимированная кнопка */
         .btn-get {
             background: linear-gradient(45deg, #ffcc00, #ff8800);
-            <span class="ai-tag">ChatGPT 5.4 ✅</span>: Привет! Я помогу тебе подобрать идеальный DPI. Просто введи модель телефона выше! ⚡
+            color: black;
+            border: none;
+            padding: 15px 30px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            transition: 0.3s;
+            animation: pulse 2s infinite;
+            display: none; /* Появится при вводе текста */
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(255, 204, 0, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 204, 0, 0); }
+        }
+
+        .btn-get:active { transform: scale(0.9); }
+
+        #result {
+            margin-top: 20px;
+            display: none;
+            background: #1a1d24;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #ffcc00;
+            text-align: left;
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .loader {
+            display: none;
+            margin: 20px auto;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #ffcc00;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* ChatGPT Box */
+        .ai-box {
+            margin-top: 40px;
+            background: #12151c;
+            border: 1px solid #333;
+            padding: 15px;
+            border-radius: 15px;
+            font-size: 14px;
+        }
+        .ai-tag { color: #00ffcc; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="emoji-bar">🎮🎮💎💎⚙️⚙️🎯🎯🔫🔫⭐⭐⭐⭐⭐💫💫⚡⚡💬</div>
+    
+    <div class="container">
+        <h1>DANZO SENSI PRO</h1>
+        <p>⭐ Настройка на оттяжку 2024-2026 ⭐</p>
+        
+        <input type="text" id="phoneInput" placeholder="Введите название устройства 🔍" oninput="toggleButton()">
+        
+        <br>
+        <button class="btn-get" id="mainBtn" onclick="getSensi()">⚙️ ПОЛУЧИТЬ НАСТРОЙКИ 🎁</button>
+        
+        <div class="loader" id="loader"></div>
+
+        <div id="result">
+            <div id="sensiData"></div>
+        </div>
     </div>
 
-    <div class="emoji-bar" style="margin-top:20px;">⭐⭐⭐⭐⭐💫💫⚡⚡💬</div>
+    <div class="ai-box">
+        <span class="ai-tag">ChatGPT 5.4 ✅</span>: Привет! Я помогу тебе подобрать идеальный DPI. Просто введи модель телефона выше! ⚡
+    </div>
+
+    <div class="emoji-bar" style="margin-top:20px;">🎮🎮💎💎⚙️⚙️🎯🎯🔫🔫⭐⭐⭐⭐⭐💫💫⚡⚡💬</div>
 
 <!-- Звук нажатия -->
-    <audio id="clickSound" src="https://soundjay.com"></audio>
+    <audio id="clickSound" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3"></audio>
 
     <script>
         const androidDPI = [421, 431, 441, 451, 461, 471, 491, 511, 521, 531, 541, 551, 561, 571, 591, 611, 621, 425, 435, 445, 455, 465, 475, 495, 505, 515, 525, 535, 545, 565, 575, 595, 605, 615, 625];
