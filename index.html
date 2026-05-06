@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DANZO SENSI PRO | Настройки Free Fire</title>
+    <link href="https://fonts.googleapis.com" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0b0e14;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: coren;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            border: 2px solid #ffcc00;
+            padding: 20px;
+            border-radius: 20px;
+            background: rgba(255, 204, 0, 0.05);
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.2);
+        }
+
+        h1 { font-family: 'Orbitron', sans-serif; color: #ffcc00; text-shadow: 2px 2px #000; }
+        .emoji-bar { font-size: 20px; margin-bottom: 20px; }
+
+        input {
+            width: 80%;
+            padding: 15px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Анимированная кнопка */
+        .btn-get {
+            background: linear-gradient(45deg, #ffcc00, #ff8800);
+            <span class="ai-tag">ChatGPT 5.4 ✅</span>: Привет! Я помогу тебе подобрать идеальный DPI. Просто введи модель телефона выше! ⚡
+    </div>
+
+    <div class="emoji-bar" style="margin-top:20px;">⭐⭐⭐⭐⭐💫💫⚡⚡💬</div>
+
+<!-- Звук нажатия -->
+    <audio id="clickSound" src="https://soundjay.com"></audio>
+
+    <script>
+        const androidDPI = [421, 431, 441, 451, 461, 471, 491, 511, 521, 531, 541, 551, 561, 571, 591, 611, 621, 425, 435, 445, 455, 465, 475, 495, 505, 515, 525, 535, 545, 565, 575, 595, 605, 615, 625];
+        const iphoneDPI = [100, 120];
+        const obzor = [125, 135, 145, 155, 165, 175, 185, 120, 130, 140, 150, 160, 170, 180, 123, 133, 138, 137, 143, 149, 152, 156, 157, 159, 164, 168, 171, 172, 173, 174, 179, 181, 182, 187];
+        const scopes = [100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160, 165, 170, 175, 180];
+        const buttons = [42, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55];
+
+        function toggleButton() {
+            const val = document.getElementById('phoneInput').value;
+            document.getElementById('mainBtn').style.display = val.length > 2 ? 'inline-block' : 'none';
+        }
+
+        function getSensi() {
+            const phone = document.getElementById('phoneInput').value;
+            const btn = document.getElementById('mainBtn');
+            const loader = document.getElementById('loader');
+            const resDiv = document.getElementById('result');
+            const sound = document.getElementById('clickSound');
+
+            // Проигрываем звук
+            sound.play();
+
+            // Скрываем кнопку и результат, показываем загрузку
+            btn.style.display = 'none';
+            resDiv.style.display = 'none';
+            loader.style.display = 'block';
+
+            setTimeout(() => {
+                loader.style.display = 'none';
+                resDiv.style.display = 'block';
+                btn.style.display = 'inline-block';
+                
+                generateSettings(phone);
+            }, 5000);
+        }
+
+        function generateSettings(name) {
+            // "Хешируем" название, чтобы для одного и того же телефона были одинаковые цифры
+            let hash = 0;
+            for (let i = 0; i < name.length; i++) {
+                hash = name.charCodeAt(i) + ((hash << 5) - hash);
+            }
+            hash = Math.abs(hash);
+
+            const isIphone = name.toLowerCase().includes('iphone');
+            
+            const myDPI = isIphone ? iphoneDPI[hash % iphoneDPI.length] : androidDPI[hash % androidDPI.length];
+            const myObzor = obzor[hash % obzor.length];
+            const myColl = scopes[hash % scopes.length];
+            const my2x = scopes[(hash + 1) % scopes.length];
+            const my4x = scopes[(hash + 2) % scopes.length];
+            const myBtn = buttons[hash % buttons.length];
+
+            document.getElementById('sensiData').innerHTML = `
+                <div style="text-align:center; font-weight:bold; color:#ffcc00;">👑 НАСТРОЙКИ ОТТЯЖКИ 👑</div>
+                <div style="text-align:center; margin-bottom:10px;">⚙️ ${name} ⚙️</div>
+                <p>1️⃣ <b>DPI:</b> ${myDPI}</p>
+                <p>2️⃣ <b>Обзор:</b> ${myObzor}</p>
+                <p>3️⃣ <b>Коллиматор:</b> ${myColl}</p>
+                <p>4️⃣ <b>2х:</b> ${my2x}</p>
+                <p>5️⃣ <b>4х:</b> ${my4x}</p>
+                <p>6️⃣ <b>Кнопка Огня:</b> ${myBtn}%</p>
+                <div style="font-size:10px; color:gray; text-align:right;">ID: ${hash.toString(16)}</div>
+            `;
+        }
+    </script>
+</body>
+</html>
