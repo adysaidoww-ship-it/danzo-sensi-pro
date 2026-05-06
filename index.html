@@ -84,7 +84,6 @@
             background: #111;
             padding: 20px;
             border-radius: 8px;
-            border-left: 3px solid #333;
             text-align: left;
         }
 
@@ -92,27 +91,35 @@
             font-size: 14px;
             font-weight: 600;
             color: #666;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .result-device {
-            font-size: 16px;
-            font-weight: 500;
-            margin-bottom: 16px;
-            color: #e0e0e0;
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #1a1a1a;
+            font-size: 13px;
         }
 
-        .setting-item {
-            font-size: 13px;
-            margin-bottom: 8px;
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        .setting-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
             color: #999;
         }
 
         .setting-value {
             color: #e0e0e0;
             font-weight: 500;
+            font-size: 14px;
         }
 
         .loader {
@@ -161,7 +168,7 @@
 
         <div id="result">
             <div class="result-title">Настройки</div>
-            <div class="result-device" id="sensiData"></div>
+            <div id="sensiData"></div>
         </div>
     </div>
 
@@ -221,12 +228,30 @@
             const myBtn = buttons[hash % buttons.length];
 
             document.getElementById('sensiData').innerHTML = `
-                <div class="setting-item">DPI: <span class="setting-value">${myDPI}</span></div>
-                <div class="setting-item">Обзор: <span class="setting-value">${myObzor}</span></div>
-                <div class="setting-item">Коллиматор: <span class="setting-value">${myColl}</span></div>
-                <div class="setting-item">2x: <span class="setting-value">${my2x}</span></div>
-                <div class="setting-item">4x: <span class="setting-value">${my4x}</span></div>
-                <div class="setting-item">Кнопка огня: <span class="setting-value">${myBtn}%</span></div>
+                <div class="setting-item">
+                    <span class="setting-label">🎯 DPI</span>
+                    <span class="setting-value">${myDPI}</span>
+                </div>
+                <div class="setting-item">
+                    <span class="setting-label">👁️ Обзор</span>
+                    <span class="setting-value">${myObzor}</span>
+                </div>
+                <div class="setting-item">
+                    <span class="setting-label">🔭 Коллиматор</span>
+                    <span class="setting-value">${myColl}</span>
+                </div>
+                <div class="setting-item">
+                    <span class="setting-label">2x</span>
+                    <span class="setting-value">${my2x}</span>
+                </div>
+                <div class="setting-item">
+                    <span class="setting-label">4x</span>
+                    <span class="setting-value">${my4x}</span>
+                </div>
+                <div class="setting-item">
+                    <span class="setting-label">🔫 Кнопка огня</span>
+                    <span class="setting-value">${myBtn}%</span>
+                </div>
             `;
         }
     </script>
