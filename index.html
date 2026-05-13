@@ -3,257 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DANZO SENSI PRO | Free Fire Settings</title>
-    <link href="https://fonts.googleapis.com" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            background-color: #0a0a0a;
-            color: #e0e0e0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 40px 20px;
-        }
-
-        .container {
-            max-width: 480px;
-            width: 100%;
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 28px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            letter-spacing: -0.5px;
-        }
-
-        .subtitle {
-            font-size: 13px;
-            color: #666;
-            margin-bottom: 32px;
-            font-weight: 400;
-        }
-
-        input {
-            width: 100%;
-            padding: 14px 16px;
-            border: 1px solid #333;
-            border-radius: 8px;
-            background: #111;
-            color: #e0e0e0;
-            font-size: 14px;
-            outline: none;
-            transition: border-color 0.2s;
-            margin-bottom: 20px;
-        }
-
-        input:focus {
-            border-color: #444;
-        }
-
-        .btn-get {
-            width: 100%;
-            padding: 14px 20px;
-            border: none;
-            border-radius: 8px;
-            background: #1a1a1a;
-            color: #e0e0e0;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: none;
-        }
-
-        .btn-get:hover {
-            background: #222;
-        }
-
-        .btn-get:active {
-            transform: scale(0.98);
-        }
-
-        #result {
-            margin-top: 24px;
-            display: none;
-            background: #111;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: left;
-        }
-
-        .result-title {
-            font-size: 14px;
-            font-weight: 600;
-            color: #666;
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .setting-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #1a1a1a;
-            font-size: 13px;
-        }
-
-        .setting-item:last-child {
-            border-bottom: none;
-        }
-
-        .setting-label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #999;
-        }
-
-        .setting-value {
-            color: #e0e0e0;
-            font-weight: 500;
-            font-size: 14px;
-        }
-
-        .loader {
-            display: none;
-            margin: 20px auto;
-            width: 20px;
-            height: 20px;
-            border: 2px solid #222;
-            border-top-color: #333;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .ai-box {
-            margin-top: 32px;
-            background: #111;
-            padding: 16px;
-            border-radius: 8px;
-            font-size: 12px;
-            color: #666;
-            border: 1px solid #222;
-        }
-
-        .ai-label {
-            color: #444;
-            font-weight: 500;
-            margin-bottom: 6px;
-            display: block;
-        }
-    </style>
+    <title>DANZO SENSI PRO - Free Fire Settings</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>DANZO SENSI PRO</h1>
-        <p class="subtitle">Free Fire Settings Generator</p>
+        <h1>💎DANZO SENSI PRO💎</h1>
+        <p class="subtitle">Настройки Free Fire на оттяжку с Grok 4.3 Pro</p>
         
-        <input type="text" id="phoneInput" placeholder="Введите название устройства" oninput="toggleButton()">
+        <div class="search-box">
+            <input type="text" id="deviceSearch" placeholder="Введите название устройства 🔍">
+            <button onclick="searchDevice()">Найти</button>
+        </div>
         
-        <button class="btn-get" id="mainBtn" onclick="getSensi()">Получить настройки</button>
+        <div id="results" class="results"></div>
         
-        <div class="loader" id="loader"></div>
-
-        <div id="result">
-            <div class="result-title">Настройки</div>
-            <div id="sensiData"></div>
+        <div class="settings-panel">
+            <h2>⚙️Настройки⚙️</h2>
+            
+            <div class="setting-group">
+                <h3>DPI</h3>
+                <select id="dpiSelect">
+                    <option value="421">421</option>
+                    <option value="431">431</option>
+                    <option value="441">441</option>
+                    <option value="451">451</option>
+                    <option value="461">461</option>
+                    <option value="471">471</option>
+                    <option value="491">491</option>
+                    <option value="511">511</option>
+                    <option value="521">521</option>
+                    <option value="531">531</option>
+                    <option value="541">541</option>
+                    <option value="551">551</option>
+                    <option value="561">561</option>
+                    <option value="571">571</option>
+                    <option value="591">591</option>
+                    <option value="611">611</option>
+                    <option value="621">621</option>
+                    <option value="425">425</option>
+                    <option value="435">435</option>
+                    <option value="445">445</option>
+                    <option value="455">455</option>
+                    <option value="465">465</option>
+                    <option value="475">475</option>
+                    <option value="495">495</option>
+                    <option value="505">505</option>
+                    <option value="515">515</option>
+                    <option value="525">525</option>
+                    <option value="535">535</option>
+                    <option value="545">545</option>
+                    <option value="565">565</option>
+                    <option value="575">575</option>
+                    <option value="595">595</option>
+                    <option value="605">605</option>
+                    <option value="615">615</option>
+                    <option value="625">625</option>
+                </select>
+            </div>
+            
+            <div class="setting-group">
+                <h3>Обзор</h3>
+                <select id="overviewSelect">
+                    <option value="125">125</option>
+                    <option value="135">135</option>
+                    <option value="145">145</option>
+                    <option value="155">155</option>
+                    <option value="165">165</option>
+                    <option value="175">175</option>
+                    <option value="185">185</option>
+                    <option value="120">120</option>
+                    <option value="130">130</option>
+                    <option value="140">140</option>
+                    <option value="150">150</option>
+                    <option value="160">160</option>
+                    <option value="170">170</option>
+                    <option value="180">180</option>
+                    <option value="123">123</option>
+                    <option value="133">133</option>
+                    <option value="138">138</option>
+                    <option value="137">137</option>
+                    <option value="143">143</option>
+                    <option value="149">149</option>
+                    <option value="152">152</option>
+                    <option value="156">156</option>
+                    <option value="157">157</option>
+                    <option value="159">159</option>
+                    <option value="164">164</option>
+                    <option value="168">168</option>
+                    <option value="171">171</option>
+                    <option value="172">172</option>
+                    <option value="173">173</option>
+                    <option value="174">174</option>
+                    <option value="179">179</option>
+                    <option value="181">181</option>
+                    <option value="182">182</option>
+                    <option value="187">187</option>
+                </select>
+            </div>
+            
+            <div class="setting-group">
+                <h3>Коллиматор</h3>
+                <select id="collimatorSelect">
+                    <option value="100">100</option>
+                    <option value="105">105</option>
+                    <option value="110">110</option>
+                    <option value="115">115</option>
+                    <option value="120">120</option>
+                    <option value="125">125</option>
+                    <option value="130">130</option>
+                    <option value="135">135</option>
+                    <option value="140">140</option>
+                    <option value="145">145</option>
+                    <option value="150">150</option>
+                    <option value="155">155</option>
+                    <option value="160">160</option>
+                    <option value="165">165</option>
+                    <option value="170">170</option>
+                    <option value="175">175</option>
+                    <option value="180">180</option>
+                </select>
+            </div>
+            
+            <div class="setting-group">
+                <h3>2x</h3>
+                <select id="zoom2xSelect">
+                    <option value="100">100</option>
+                    <option value="105">105</option>
+                    <option value="110">110</option>
+                    <option value="115">115</option>
+                    <option value="120">120</option>
+                    <option value="125">125</option>
+                    <option value="130">130</option>
+                    <option value="135">135</option>
+                    <option value="140">140</option>
+                    <option value="145">145</option>
+                    <option value="150">150</option>
+                    <option value="155">155</option>
+                    <option value="160">160</option>
+                    <option value="165">165</option>
+                    <option value="170">170</option>
+                    <option value="175">175</option>
+                    <option value="180">180</option>
+                </select>
+            </div>
+            
+            <div class="setting-group">
+                <h3>4x</h3>
+                <select id="zoom4xSelect">
+                    <option value="100">100</option>
+                    <option value="105">105</option>
+                    <option value="110">110</option>
+                    <option value="115">115</option>
+                    <option value="120">120</option>
+                    <option value="125">125</option>
+                    <option value="130">130</option>
+                    <option value="135">135</option>
+                    <option value="140">140</option>
+                    <option value="145">145</option>
+                    <option value="150">150</option>
+                    <option value="155">155</option>
+                    <option value="160">160</option>
+                    <option value="165">165</option>
+                    <option value="170">170</option>
+                    <option value="175">175</option>
+                    <option value="180">180</option>
+                </select>
+            </div>
+            
+            <div class="setting-group">
+                <h3>Кнопка Огня</h3>
+                <select id="fireButtonSelect">
+                    <option value="42">42</option>
+                    <option value="44">44</option>
+                    <option value="45">45</option>
+                    <option value="46">46</option>
+                    <option value="47">47</option>
+                    <option value="48">48</option>
+                    <option value="49">49</option>
+                    <option value="50">50</option>
+                    <option value="51">51</option>
+                    <option value="52">52</option>
+                    <option value="53">53</option>
+                    <option value="54">54</option>
+                    <option value="55">55</option>
+                </select>
+            </div>
+            
+            <div class="ai-section">
+                <h3>🤖 Grok 4.3 Pro</h3>
+                <p>AI-интеграция для оптимизации настроек</p>
+                <button onclick="optimizeSettings()">Оптимизировать настройки</button>
+            </div>
         </div>
     </div>
-
-    <div class="ai-box">
-        <span class="ai-label">GhatGPT 5.4</span>
-        Настройте идеальные параметры для вашего устройства
-    </div>
-
-    <audio id="clickSound" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3"></audio>
-
-    <script>
-        const androidDPI = [421, 431, 441, 451, 461, 471, 491, 511, 521, 531, 541, 551, 561, 571, 591, 611, 621, 425, 435, 445, 455, 465, 475, 495, 505, 515, 525, 535, 545, 565, 575, 595, 605, 615, 625];
-        const iphoneDPI = [100, 120];
-        const obzor = [125, 135, 145, 155, 165, 175, 185, 120, 130, 140, 150, 160, 170, 180, 123, 133, 138, 137, 143, 149, 152, 156, 157, 159, 164, 168, 171, 172, 173, 174, 179, 181, 182, 187];
-        const scopes = [100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160, 165, 170, 175, 180];
-        const buttons = [42, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55];
-
-        function toggleButton() {
-            const val = document.getElementById('phoneInput').value;
-            document.getElementById('mainBtn').style.display = val.length > 2 ? 'block' : 'none';
-        }
-
-        function getSensi() {
-            const phone = document.getElementById('phoneInput').value;
-            const btn = document.getElementById('mainBtn');
-            const loader = document.getElementById('loader');
-            const resDiv = document.getElementById('result');
-            const sound = document.getElementById('clickSound');
-
-            sound.play();
-
-            btn.style.display = 'none';
-            resDiv.style.display = 'none';
-            loader.style.display = 'block';
-
-            setTimeout(() => {
-                loader.style.display = 'none';
-                resDiv.style.display = 'block';
-                btn.style.display = 'block';
-                generateSettings(phone);
-            }, 5000);
-        }
-
-        function generateSettings(name) {
-            let hash = 0;
-            for (let i = 0; i < name.length; i++) {
-                hash = name.charCodeAt(i) + ((hash << 5) - hash);
-            }
-            hash = Math.abs(hash);
-
-            const isIphone = name.toLowerCase().includes('iphone');
-            const myDPI = isIphone ? iphoneDPI[hash % iphoneDPI.length] : androidDPI[hash % androidDPI.length];
-            const myObzor = obzor[hash % obzor.length];
-            const myColl = scopes[hash % scopes.length];
-            const my2x = scopes[(hash + 1) % scopes.length];
-            const my4x = scopes[(hash + 2) % scopes.length];
-            const myBtn = buttons[hash % buttons.length];
-
-            document.getElementById('sensiData').innerHTML = `
-                <div class="setting-item">
-                    <span class="setting-label">🎯 DPI</span>
-                    <span class="setting-value">${myDPI}</span>
-                </div>
-                <div class="setting-item">
-                    <span class="setting-label">👁️ Обзор</span>
-                    <span class="setting-value">${myObzor}</span>
-                </div>
-                <div class="setting-item">
-                    <span class="setting-label">🔭 Коллиматор</span>
-                    <span class="setting-value">${myColl}</span>
-                </div>
-                <div class="setting-item">
-                    <span class="setting-label">2x</span>
-                    <span class="setting-value">${my2x}</span>
-                </div>
-                <div class="setting-item">
-                    <span class="setting-label">4x</span>
-                    <span class="setting-value">${my4x}</span>
-                </div>
-                <div class="setting-item">
-                    <span class="setting-label">🔫 Кнопка огня</span>
-                    <span class="setting-value">${myBtn}%</span>
-                </div>
-            `;
-        }
-    </script>
+    
+    <script src="script.js"></script>
 </body>
 </html>
